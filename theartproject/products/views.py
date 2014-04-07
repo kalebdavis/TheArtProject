@@ -18,9 +18,12 @@ def addProduct(request):
 	if form.is_valid():
 		save_it = form.save(commit=False)
 		save_it.save()
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect('/products/')
 
 	variables = {}
 	variables['form'] = form
 
 	return render_to_response("product_form.html", variables, context_instance=RequestContext(request))
+
+def viewHomePage(request):
+	return render_to_response('home.html')
