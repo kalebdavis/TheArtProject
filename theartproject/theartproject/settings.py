@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'products',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -74,6 +75,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+MEDIA_ROOT = "/var/www/artproject.com/media/"
+MEDIA_URL = "http://media.artproject.com/"
 
 
 # Static files (CSS, JavaScript, Images)

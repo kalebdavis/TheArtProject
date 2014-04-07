@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+
+from products.views import *
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -9,4 +12,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'products.views.listProducts', name='product_list'),
+    url(r'^add_product/$', 'products.views.addProduct', name='product_create'),
 )

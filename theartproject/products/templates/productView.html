@@ -1,0 +1,34 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Products</title>
+	</head>
+
+	<body>
+		<h2>Here are all of our products. Buy them.</h2><br/>
+
+		<div>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>Title of Artwork</th>
+						<th>Price</th>
+						<th>Artist</th>
+					</tr>
+				</thead>
+				{% for product in products %}
+				<tbody>
+					<td>{{product.name}}</td>
+					<td>{{product.price}}</td>
+					<td>{{product.artist}}</td>
+				</tbody>
+				{% endfor %}
+			</table>
+		</div>
+
+		<br/></br>
+		<a href="/add_product/">Add new product</a>
+	</body>
+</html>
+{% endblock %}
