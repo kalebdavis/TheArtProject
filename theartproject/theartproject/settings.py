@@ -76,8 +76,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = "/var/www/artproject.com/media/"
-MEDIA_URL = "http://media.artproject.com/"
+MEDIA_ROOT = "/theartproject/products/"
+MEDIA_URL = "/media/"
 
 
 # Static files (CSS, JavaScript, Images)
