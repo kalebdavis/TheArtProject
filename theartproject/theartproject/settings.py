@@ -27,6 +27,9 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# provide our get_profile()
+AUTH_PROFILE_MODULE= 'adminuser.Admin'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -37,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'adminuser',
 )
 
 MIDDLEWARE_CLASSES = (

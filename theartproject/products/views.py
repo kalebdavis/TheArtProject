@@ -10,10 +10,10 @@ def listProducts(request):
 	allProducts = Product.objects.all()
 
 	allImages = Image.objects.all()
-	variables = {}
-	variables['products'] = allProducts
-	variables['images'] = allImages
-	return render_to_response('productView.html', variables)
+	context = {}
+	context['products'] = allProducts
+	context['images'] = allImages
+	return render_to_response('productView.html', context)
 
 def addProduct(request):
 	form = ProductForm(request.POST or None, request.FILES)
@@ -32,11 +32,11 @@ def addProduct(request):
 
 		return HttpResponseRedirect('/products/')
 
-	variables = {}
-	variables['form'] = form
-	variables['product'] = Product
+	context = {}
+	context['form'] = form
+	context['product'] = Product
 
-	return render_to_response("product_form.html", variables, context_instance=RequestContext(request))
+	return render_to_response("product_form.html", context, context_instance=RequestContext(request))
 
 def viewHomePage(request):
 	return render_to_response('home.html', locals(), context_instance=RequestContext(request))
