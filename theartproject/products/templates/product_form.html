@@ -10,9 +10,10 @@
 
 			<form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
 				{{form.as_p}}
-				
 
-				<input type='submit' value='Upload'>
+				<input title='Add a new image' type='submit' name='add_image' value='Add' />	
+
+				<input title='Upload your artwork!' type='submit' value='Upload' />
 			</form>
 	</body>
 </html>

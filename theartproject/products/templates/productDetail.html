@@ -6,8 +6,13 @@
 			<dt>{{product.name}}</dt>
 				<dd>{{product.price}}</dd>
 				<dd>{{product.artist}}</dd>
-				<dd><a href="{{ product.image.url }}"><img src="{{ product.image.url }}"/></dd>
+				{% for image in images %}
+				<dd><a href="{{ image.image.url }}"><img src="{{ image.image.url }}"/></dd>
+				{% endfor %}
 		</dt>
+
+		<br/>
+		<a href="/products/">Go Back</a>
 	</body>
 
 </html>

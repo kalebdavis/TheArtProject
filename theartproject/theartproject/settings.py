@@ -76,7 +76,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = "/theartproject/products/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "theartproject", "static", "media")
 MEDIA_URL = "/media/"
 
 
@@ -84,3 +84,8 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Template location
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(BASE_DIR), "theartproject", "static", "templates"),
+)

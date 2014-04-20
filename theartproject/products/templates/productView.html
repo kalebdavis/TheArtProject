@@ -22,7 +22,11 @@
 					<td><a href={% url 'product_detail' product.id %}>{{product.name}}</a></td>
 					<td>{{product.price}}</td>
 					<td>{{product.artist}}</td>
-					<td><img src="{{ product.image.url }}"></td>
+					{% for image in images %}
+						{% if image.product == product %}
+						<td><img src="{{ image.image.url }}"></td>
+						{% endif %}
+					{% endfor %}
 				</tbody>
 				{% endfor %}
 			</table>
