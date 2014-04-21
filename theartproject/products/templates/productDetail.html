@@ -11,6 +11,10 @@
 				{% endfor %}
 		</dt>
 
+		<div>
+			<a href={% url 'product_delete' product.id %}>Delete</a>
+		</div>
+
 		<br/>
 		<a href="/products/">Go Back</a>
 	</body>
