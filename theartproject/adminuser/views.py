@@ -87,6 +87,8 @@ is an admin.
 """
 def viewHomePage(request):
 	if request.user.is_authenticated():
+		print(request.user)
+		print(Group.objects.get(name="admin").user_set.all())
 		if request.user in Group.objects.get(name="admin").user_set.all():
 			return render_to_response('admin_home.html', locals(), context_instance=RequestContext(request))
 	return HttpResponseRedirect('/')
