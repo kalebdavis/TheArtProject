@@ -8,7 +8,13 @@
 	<body>
 		<h1>Home Page</h1>
 		<br/><br/>
-		<p><a href="/products/">View all products</a></p>
+		<div>
+		<a href="/products/">View all products</a>
+		</div>
+		<div>
+			{% if user.is_authenticated %}<p><a href="/logout/">Logout</a></p>
+			{% else %}<p><a href="/login/">Login</a></p>{% endif %}
+		</div>
 	</body>
 </html>
 {% endblock %}

@@ -1,8 +1,16 @@
 from django import forms
-
-
 from .models import Product
 
+"""
+ProductForm provides the form for adding a new product.
+
+Uses Django's ModelForm class to build the form based on the provided Product model
+
+It also provides 4 ImageFields to give the uploader the option to upload images.
+The first image is required for the new product, but the following three are optional.
+
+TODO: Make image uploading unlimited
+"""
 class ProductForm(forms.ModelForm):
 	class Meta:
 		model = Product
