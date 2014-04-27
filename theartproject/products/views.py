@@ -11,6 +11,7 @@ from django.core.urlresolvers import reverse
 from products.models import *
 from .forms import ProductForm
 
+
 """
 listProducts renders the productView template to show all the products with their images.
 
@@ -25,7 +26,10 @@ def listProducts(request):
 
 	if request.method == 'POST':
 		answer = request.POST['value']
-		allProducts = Product.objects.filter(tags__contains=answer)
+		tags_list = Product.objects.filter(tags__contains=answer)
+		name_list = Product.objects.filter(name__contains=answer)
+		artist_list = Product.objects.filter(artist__contains=answer)
+		allProducts = tags_list | name_list | artist_list
 
 	context = {}
 	context['products'] = allProducts
