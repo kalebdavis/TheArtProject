@@ -58,6 +58,13 @@ def addProduct(request):
 				imageEntry.product = product
 				imageEntry.image = value
 				imageEntry.save()
+			for i in range(0,3):
+				tag = request.POST['tag' + str(i+1)]
+				if tag != "":
+					tagEntry = Tag()
+					tagEntry.product = product
+					tagEntry.tag = tag
+					tagEntry.save()
 			return HttpResponseRedirect("/products/")
 		else:
 			return render_to_response("product_form.html", {"form":form}, context_instance=RequestContext(request))
@@ -72,7 +79,29 @@ def addProduct(request):
 viewHomePage renders the main site's home page
 """
 def viewHomePage(request):
-	return render_to_response('home.html', locals(), context_instance=RequestContext(request))
+	context = {}
+
+	recentProducts = Product.objects.all().order_by('timestamp')
+	images = []
+	allImages = Image.objects.all()
+	for image in allImages:
+		for product in recentProducts:
+			if image.product == product:
+				images.append(image)
+
+	categories = Category.objects.all()
+	imageFromCategory = []
+	for image in allImages:
+		for category in categories:
+			if image.product.category == category:
+				imageFromCategory.append(image)
+				break
+
+	context['recentProducts'] = recentProducts[0:5]
+	context['images'] = images
+	context['categories'] = categories
+	context['imageFromCategory'] = imageFromCategory
+	return render_to_response('home.html', context, context_instance=RequestContext(request))
 	
 """
 detailProduct takes the user to the product detail's page.

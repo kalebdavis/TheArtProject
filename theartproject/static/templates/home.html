@@ -1,20 +1,38 @@
-{% block content %}
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>The Art Project</title>
-	</head>
+{% extends 'base.html' %}
 
-	<body>
-		<h1>Home Page</h1>
-		<br/><br/>
-		<div>
-		<a href="/products/">View all products</a>
+
+{% block content %}
+
+<div id = "bodyContent">
+	<div class = "slideshowContainer">
+	<div id = "btnLeft"></div>
+	<div id = "btnRight"></div>
+		<div class = "slideshow">
+			<div id="slideshow_ul">
+				{% for image in images %}
+					{% for product in recentProducts %}
+						{% if image.product == product %}
+							<li data-id=1><a href='#'><img src="{{image.image.url}}" width="960" height="400"/></a></li>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
-		<div>
-			{% if user.is_authenticated %}<p><a href="/logout/">Logout</a></p>
-			{% else %}<p><a href="/login/">Login</a></p>{% endif %}
-		</div>
-	</body>
-</html>
+	</div>
+	
+<div class = "container">
+	{% for category in categories %}
+	<div class = "categories">
+		<div class = "title">{{category.category}}</div>
+		{% for image in imageFromCategory %}
+			{% if image.product.category == category %}
+				<img src="{{image.image.url}}"/>
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% endfor %}
+</div>
+
+</div>
+
 {% endblock %}

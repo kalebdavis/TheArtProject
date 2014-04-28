@@ -25,4 +25,8 @@ urlpatterns = patterns('',
     url(r'^add_product/$', 'products.views.addProduct', name='product_create'),
     url(r'^delete_product/$', 'products.views.viewProductsToDelete', name='product_create'),
     url(r'^delete/(?P<product_id>\d+)/$', 'products.views.deleteProduct', name='product_delete'),
-    url(r'^(?P<product_id>\d+)', 'products.views.detailProduct', name='product_detail')) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^(?P<product_id>\d+)', 'products.views.detailProduct', name='product_detail'))
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
