@@ -1,22 +1,39 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-	<body>
-		<dl>
+{% block content %}
+
+<div id = "bodyContent">
+</br>
+<div class = " titleBack"><a href="/products/"> < Back to Previous Page</a> </div>
+
+
+</br>
+<section>
+	{% for image in images %}
+	<img src = "{{ image.image.url }}" alt = "product" width="480" height="200">
+	{% endfor %}
+	
+	<h2>Description </h2>
+	<div class = "titleBorder"></div>
+	
+	<p>
+	<dl>
 			<dt>{{product.name}}</dt>
 				<dd>{{product.price}}</dd>
 				<dd>{{product.artist}}</dd>
-				{% for image in images %}
-				<dd><a href="{{ image.image.url }}"><img src="{{ image.image.url }}"/></dd>
-				{% endfor %}
 		</dt>
-
-		<div>
-			<a href={% url 'product_delete' product.id %}>Delete</a>
+	</p>
+	
+	
+	</section>
+	
 		</div>
+	</div>
+	
+<div class = "container">
+	
+</div>
 
-		<br/>
-		<a href="/products/">Go Back</a>
-	</body>
+</div>
 
-</html>
+{% endblock %}

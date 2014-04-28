@@ -17,6 +17,7 @@ class Product(models.Model):
 	artist = models.CharField(max_length=140)
 	category = models.ForeignKey(Category)
 	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+	description = models.TextField(null=True, blank=True)
 
 	def __str__(self):
 		return self.name

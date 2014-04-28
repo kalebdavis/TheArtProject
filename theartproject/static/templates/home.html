@@ -9,6 +9,7 @@
 	<div id = "btnRight"></div>
 		<div class = "slideshow">
 			<div id="slideshow_ul">
+							<li data-id=1><a href="#"><img src="/media/img/slides/placeholderSlide.gif" width="960" height="400"/></a></li>
 				{% for image in images %}
 					{% for product in recentProducts %}
 						{% if image.product == product %}
@@ -26,7 +27,7 @@
 		<div class = "title">{{category.category}}</div>
 		{% for image in imageFromCategory %}
 			{% if image.product.category == category %}
-				<a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}"/></a>
+				<a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}" width="316" height="139"/></a>
 			{% endif %}
 		{% endfor %}
 	</div>

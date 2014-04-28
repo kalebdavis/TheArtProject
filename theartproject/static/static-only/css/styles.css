@@ -290,7 +290,7 @@ small{
 .categories {
 	width: 33%;
 	height: 189px;
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	background-color: gray;
 	
 	display: inline-block;

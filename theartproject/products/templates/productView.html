@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {% block content %}
 <!DOCTYPE html>
 <html>
@@ -12,11 +14,9 @@
 			<form action="" method="post"> {% csrf_token %}
 				<select name="value">
 					<option selected="selected" value="">Objects on page:</option>
-					<option value="funsies">funsies</option>
-					<option value="derp">derp</option>
-					<option value="awesome">awesome</option>
-					<option value="van">Van</option>
-					<option value="Leonardo">Leonardo</option>
+					{% for category in categories %}
+						<option value="{{category.category}}">{{category.category}}</option>
+					{% endfor %}
 				</select>
 			<input type="submit" value="Search">
 			</form>

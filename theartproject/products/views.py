@@ -23,17 +23,21 @@ Possible solution: Make another table with a foreign key to the product.
 def listProducts(request):
 	allProducts = Product.objects.all()
 	allImages = Image.objects.all()
+	allCategories = Category.objects.all()
 
 	if request.method == 'POST':
 		answer = request.POST['value']
-		tags_list = Product.objects.filter(tags__contains=answer)
-		name_list = Product.objects.filter(name__contains=answer)
-		artist_list = Product.objects.filter(artist__contains=answer)
-		allProducts = tags_list | name_list | artist_list
+		#tags_list = Product.objects.filter(tags__contains=answer)
+		#name_list = Product.objects.filter(name__contains=answer)
+		#rtist_list = Product.objects.filter(artist__contains=answer)
+		categories_list = Product.objects.filter(category__category__contains=answer)
+		#allProducts = tags_list | name_list | artist_list
+		allProducts = categories_list
 
 	context = {}
 	context['products'] = allProducts
 	context['images'] = allImages
+	context['categories'] = allCategories
 	return render_to_response('productView.html', context, context_instance=RequestContext(request))
 
 """
