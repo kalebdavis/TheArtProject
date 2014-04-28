@@ -135,3 +135,6 @@ def viewProductsToDelete(request):
 		return render_to_response('productsToDelete.html', context, context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect("/")
+
+def about(request):
+	return render_to_response('about.html', locals(), context_instance=RequestContext(request))

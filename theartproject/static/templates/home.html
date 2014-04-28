@@ -12,7 +12,7 @@
 				{% for image in images %}
 					{% for product in recentProducts %}
 						{% if image.product == product %}
-							<li data-id=1><a href='#'><img src="{{image.image.url}}" width="960" height="400"/></a></li>
+							<li data-id=1><a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}" width="960" height="400"/></a></li>
 						{% endif %}
 					{% endfor %}
 				{% endfor %}
@@ -26,7 +26,7 @@
 		<div class = "title">{{category.category}}</div>
 		{% for image in imageFromCategory %}
 			{% if image.product.category == category %}
-				<img src="{{image.image.url}}"/>
+				<a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}"/></a>
 			{% endif %}
 		{% endfor %}
 	</div>
