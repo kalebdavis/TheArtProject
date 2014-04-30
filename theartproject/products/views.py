@@ -27,12 +27,16 @@ def listProducts(request):
 
 	if request.method == 'POST':
 		answer = request.POST['value']
-		#tags_list = Product.objects.filter(tags__contains=answer)
-		#name_list = Product.objects.filter(name__contains=answer)
-		#rtist_list = Product.objects.filter(artist__contains=answer)
 		categories_list = Product.objects.filter(category__category__contains=answer)
-		#allProducts = tags_list | name_list | artist_list
 		allProducts = categories_list
+
+	elif request.method == 'GET':
+		search = request.GET.get('search_query', '')
+		tags_list = Product.objects.filter(category__category__contains=search)
+		name_list = Product.objects.filter(name__contains=search)
+		artist_list = Product.objects.filter(artist__contains=search)
+		
+		allProducts = tags_list | name_list | artist_list
 
 	context = {}
 	context['products'] = allProducts

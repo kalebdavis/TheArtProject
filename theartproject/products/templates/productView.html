@@ -12,13 +12,12 @@
 
 		<div>
 			<form action="" method="post"> {% csrf_token %}
-				<select name="value">
-					<option selected="selected" value="">Objects on page:</option>
+				
+					<input type="submit" name="value" value="">All</input>
 					{% for category in categories %}
-						<option value="{{category.category}}">{{category.category}}</option>
+						<input type="submit" name="value" value="{{category.category}}">
 					{% endfor %}
-				</select>
-			<input type="submit" value="Search">
+
 			</form>
 		</div>
 
