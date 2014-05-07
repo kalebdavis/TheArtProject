@@ -4,36 +4,37 @@
 {% block content %}
 
 <div id = "bodyContent">
-	<div class = "slideshowContainer">
-	<div id = "btnLeft"></div>
-	<div id = "btnRight"></div>
-		<div class = "slideshow">
-			<div id="slideshow_ul">
-							<li data-id=1><a href="#"><img src="/media/img/slides/placeholderSlide.gif" width="960" height="400"/></a></li>
-				{% for image in images %}
+		<div class = "slideshowContainer">
+			<div id = "btnLeft"></div>
+			<div id = "btnRight"></div>
+			<div class = "slideshow">
+				<div id="slideshow_ul">
+					<li data-id=1><a href="#"><img src="/media/img/slides/placeholderSlide.gif" width="960" height="400"/></a></li>
+					{% for image in images %}
 					{% for product in recentProducts %}
 						{% if image.product == product %}
 							<li data-id=1><a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}" width="960" height="400"/></a></li>
 						{% endif %}
 					{% endfor %}
-				{% endfor %}
+					{% endfor %}
+				</div>
 			</div>
 		</div>
-	</div>
-	
-<div class = "container">
-	{% for category in categories %}
-	<div class = "categories">
-		<div class = "title">{{category.category}}</div>
-		{% for image in imageFromCategory %}
+		
+		<div id = "catContainer">
+		{% for category in categories %}
+		<div class = "categories">
+			<div class = "title">{{category.category}}</div>
+			{% for image in imageFromCategory %}
 			{% if image.product.category == category %}
-				<a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}" width="316" height="139"/></a>
+				<a href={% url 'product_detail' image.product.id %}><img src="{{image.image.url}}" width="100%" height="100%"/></a>
 			{% endif %}
+			{% endfor %}
+		</div>
 		{% endfor %}
+		</div>
 	</div>
-	{% endfor %}
-</div>
-
-</div>
+		
+	</div>
 
 {% endblock %}

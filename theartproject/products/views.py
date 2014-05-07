@@ -24,11 +24,13 @@ def listProducts(request):
 	allProducts = Product.objects.all()
 	allImages = Image.objects.all()
 	allCategories = Category.objects.all()
+	answer = None
 
 	if request.method == 'POST':
 		answer = request.POST['value']
 		categories_list = Product.objects.filter(category__category__contains=answer)
 		allProducts = categories_list
+		context['answer'] = answer
 
 	elif request.method == 'GET':
 		search = request.GET.get('search_query', '')
@@ -38,11 +40,19 @@ def listProducts(request):
 		
 		allProducts = tags_list | name_list | artist_list
 
+	filteredImages = []
+	count = 0
+	for image in allImages:
+		for product in allProducts:
+			if image.product == product and count == 0:
+				filteredImages.append(image)
+				count += 1
+		count = 0
 	context = {}
 	context['products'] = allProducts
-	context['images'] = allImages
+	context['images'] = filteredImages
 	context['categories'] = allCategories
-	return render_to_response('productView.html', context, context_instance=RequestContext(request))
+	return render_to_response('browse.html', context, context_instance=RequestContext(request))
 
 """
 addProduct adds a new product to the database

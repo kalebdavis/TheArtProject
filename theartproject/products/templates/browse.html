@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id = "bodyContent">
+		
+		<div id = "itemWrapper">
+			<div id = "v-nav">
+			<form action="" method="post"> {% csrf_token %}
+				<ul>
+					{% for category in categories %}
+					<li {% if category == answer or answer == None and forloop.first %} class="selected" {% endif %}><a href="#" class="selected"><div class="decoration"></div>{{category.category}}</a></li>
+					{% endfor %}
+				</ul>
+			</form>
+			</div>
+			<div id = "content">
+				<h4>{% if answer != None %}{{answer}}
+				{% else %} {{ categories | first }} {% endif %}
+				</h4>
+
+				{% for product in products %}
+				<a href="item.html"><div class = "item">
+					{% for image in images %}
+						{% if image.product == product %}
+						<img src="{{ image.image.url }}" width="226px" height="226px" />
+						{% endif %}
+					{% endfor %}
+					<div class = "title"><span class="name">{{product.name}}</span><span class="price">${{product.price}}</span></div>
+				</div></a>
+				{% endfor %}
+			</div>
+		</div>
+	
+	</div>
+
+{% endblock %}

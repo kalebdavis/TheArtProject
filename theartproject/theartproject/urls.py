@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from products.views import *
 
@@ -27,8 +28,9 @@ urlpatterns = patterns('',
     url(r'^delete/(?P<product_id>\d+)/$', 'products.views.deleteProduct', name='product_delete'),
     url(r'^(?P<product_id>\d+)', 'products.views.detailProduct', name='product_detail'),
 
-    url(r'^about/$', 'products.views.about', name='about'),
-
+    #url(r'^contact/$', 'products.views.about', name='about'),
+    url(r'^contact/$', 'products.views.about', name='about'),
+    #url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
 )
 
 if settings.DEBUG:
