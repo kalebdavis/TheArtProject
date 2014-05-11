@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Submit Product</title>
+	</head>
+
+	<body>
+		<h2>Submit product</h2>
+
+			<form method='POST' action='' enctype='multipart/form-data'> {% csrf_token %}
+				{{form.as_p}}
+				<input title='Submit your artwork!' type='submit' value='Send' />
+			</form>
+	</body>
+</html>
+{% endblock %}

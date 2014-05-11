@@ -26,3 +26,9 @@ class ProductForm(forms.ModelForm):
 	image2 = forms.ImageField(required=False)
 	image3 = forms.ImageField(required=False)
 	image4 = forms.ImageField(required=False)
+
+class SubmitForm(forms.Form):
+	name = forms.CharField(label='Name', max_length=64, required = True )
+	email = forms.EmailField(label='e-mail', required = True )
+	image1 = forms.Field(label='sample photo', widget = forms.FileInput, required = True )
+	text = forms.CharField(label='Anything we need to know', widget=forms.Textarea, required = False )

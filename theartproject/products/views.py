@@ -7,9 +7,10 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import user_passes_test
 from django.forms.formsets import formset_factory
 from django.core.urlresolvers import reverse
+from django.core.mail import send_mail, EmailMessage
 
 from products.models import *
-from .forms import ProductForm
+from .forms import ProductForm, SubmitForm
 
 
 """
@@ -120,7 +121,30 @@ def viewHomePage(request):
 	context['categories'] = categories
 	context['imageFromCategory'] = imageFromCategory
 	return render_to_response('home.html', context, context_instance=RequestContext(request))
+
+
+"""
+Sets up the email form for submissions
+"""
+def submitProduct(request):
 	
+	if request.method == 'POST':
+		form = SubmitForm(request.POST, request.FILES)
+		if form.is_valid():
+			name = request.POST['name']
+			email = request.POST['email']
+			subject = 'The Art Project Submission'
+			text = request.POST['text']
+			image1 = request.FILES['image1']
+			mail = EmailMessage(subject, text, [email], ['nrm8266@rit.edu'])
+			mail.attach(image1.name, image1.read, image1.content_type)
+			mail.send()
+		
+			return HttpResponseRedirect("/products/")	
+	else:
+		form = SubmitForm()
+		return render_to_response("productSubmit.html", {"form":form}, context_instance=RequestContext(request))
+				
 """
 detailProduct takes the user to the product detail's page.
 It shows the product's name, artist, price, and any images.
