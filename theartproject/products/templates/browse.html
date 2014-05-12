@@ -8,7 +8,8 @@
 			<form action="" method="post"> {% csrf_token %}
 				<ul>
 					{% for category in categories %}
-					<li {% if category == answer or answer == None and forloop.first %} class="selected" {% endif %}><a href="#" class="selected"><div class="decoration"></div>{{category.category}}</a></li>
+					<li {% if category == answer or answer == None and forloop.first %} class="selected"><button class="selected" type="submit" value="{{category.category}}">
+					{% else %}<li><button> {% endif %}<div class="decoration"></div><a href="/products/" {% if category == answer or answer == None and forloop.first %}class="selected" {% endif %}><div class="decoration"></div>{{category.category}}</a></li>
 					{% endfor %}
 				</ul>
 			</form>
@@ -19,7 +20,7 @@
 				</h4>
 
 				{% for product in products %}
-				<a href="item.html"><div class = "item">
+				<a href={% url 'product_detail' product.id %}><div class = "item">
 					{% for image in images %}
 						{% if image.product == product %}
 						<img src="{{ image.image.url }}" width="226px" height="226px" />

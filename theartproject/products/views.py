@@ -55,6 +55,28 @@ def listProducts(request):
 	context['categories'] = allCategories
 	return render_to_response('browse.html', context, context_instance=RequestContext(request))
 
+# Either needs to filter again or needs to call listProducts with a current filter
+# Once Nick gets that set up I'll work on that
+def filteredProducts(request, product_id):
+	allProducts = Product.objects.all()
+	allImages = Image.objects.all()
+	allCategories = Category.objects.all()
+	categories_list = Product.objects.filter(id=product_id)
+
+	filteredImages = []
+	count = 0
+	for image in allImages:
+		for product in allProducts:
+			if image.product == product and count == 0:
+				filteredImages.append(image)
+				count += 1
+		count = 0
+	context = {}
+	context['products'] = categories_list
+	context['images'] = filteredImages
+	context['categories'] = allCategories
+	return render_to_response('browse.html', context, context_instance=RequestContext(request))
+
 """
 addProduct adds a new product to the database
 
@@ -154,7 +176,7 @@ TODO: Add the payment stuff to this page, so users can purchase products from th
 def detailProduct(request, product_id):
 	product = get_object_or_404(Product, pk=product_id)
 	images = Image.objects.filter(product=product)
-	return render_to_response('productDetail.html', {'product':product, 'images':images})
+	return render_to_response('item.html', {'product':product, 'images':images})
 
 """
 deleteProduct takes the product completely out of the database.

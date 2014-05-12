@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id = "bodyContent">
+	<div id = "submitWrapper">
+		<p>Would you like to donate a product to be sold for the Art House cause? We'd love to show-case it! Please enter the following info below, and submit a few pictures
+		of your product. We'll review it and get back to you within a few days. If you have any questions, feel free to ask them at <a href= "mailto:ArtHouseArtProject@gmail.com" target="_top">ArtHouseArtProject@gmail.com</a></p>
+		<form>
+			First Name: <input class = "name" type = "text" name = "firstname"><br />
+			E-Mail: <input class = "email" type = "text" name = "email"><br />
+			Description: <input class = "desc" type = "text" name = "description"><br />
+			
+			<input type = "file" name = "datafile" size = "40"><br />
+			<input type = "submit" value = "Submit">
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

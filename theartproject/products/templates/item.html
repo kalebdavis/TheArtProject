@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id = "bodyContent">
+	<div id = "itemWrapper">
+		<div class = "itemContent">
+			<span><a href="/products/"><img src = "/media/img/back.png" /><h4>Back to Previous Page</h4></a></span>
+			<div class = "mainContent">
+				{% for image in images %}
+				<img src = "{{ image.image.url }}" alt="product" width="510" height="409" />
+				{% endfor %}
+				<div class = "descTitle">
+					<h4>{{product.name}}</h4>
+					<h3>{{product.artist}}</h3>
+				<div class= "descInfo">
+					<h4>Price: ${{product.price}}</h4>
+					<span>
+					<h3>Quantity</h3>
+					<select>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+					</span>
+					<button>Purchase</button>
+				</div>
+				</div>
+				<div class = "descText">
+					<h4>Description</h4>
+					<p>{{product.description}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

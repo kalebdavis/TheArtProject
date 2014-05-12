@@ -19,11 +19,15 @@
 		<div class = "container">
 			<a href="/" id="logo"></a>
 				<div id="leftNav">
-					<ul>
-						<li><a class="selected" href="/">Home</a></li>
-						<li><a href="/products/">Browse</a></li>
-						<li><a href="/contact/">Contact</a></li>
-						<li><a href="/submit/">Submit</a></li>
+					<ul>						
+						{% url 'home' as home_url %}
+						<li><a {% if request.get_full_path == home_url %} class="selected" {% endif %} href="/">Home</a></li>
+						{% url 'product_list' as product_url %}
+						<li><a {% if request.get_full_path == product_url %} class="selected" {% endif %} href="/products/">Browse</a></li>
+						{% url 'contact' as contact_url %}
+						<li><a {% if request.get_full_path == contact_url %} class="selected" {% endif %} href="/contact/">Contact</a></li>
+						{% url 'submit' as submit_url %}
+						<li><a {% if request.get_full_path == submit_url %} class="selected" {% endif %} href="/submit/">Submit</a></li>
 					</ul>
 				</div>
 				<div id="rightNav">
@@ -47,8 +51,8 @@
 			<nav>
 				<ul>
 					<li><a href="#">Payment Information</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">Terms</a></li>
+					<li><a href="/contact/">Contact</a></li>
+					<li><a href="/terms/">Terms</a></li>
 				</ul>
 			</nav>
 			<article id = "missionStatement">

@@ -23,14 +23,17 @@ urlpatterns = patterns('',
     url(r'^admin_home/$', 'adminuser.views.viewHomePage', name='adminhome'),
 
     url(r'^products/$', 'products.views.listProducts', name='product_list'),
+    url(r'^products/(?P<product_id>\d+)', 'products.views.filteredProducts', name='product_list_filtered'),
     url(r'^add_product/$', 'products.views.addProduct', name='product_create'),
     url(r'^delete_product/$', 'products.views.viewProductsToDelete', name='product_create'),
     url(r'^delete/(?P<product_id>\d+)/$', 'products.views.deleteProduct', name='product_delete'),
     url(r'^(?P<product_id>\d+)', 'products.views.detailProduct', name='product_detail'),
 
     #url(r'^contact/$', 'products.views.about', name='about'),
-    url(r'^contact/$', 'products.views.about', name='about'),
-    #url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
+    #url(r'^contact/$', 'products.views.about', name='contact'),
+    url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
+    url(r'^terms/$', TemplateView.as_view(template_name='terms.html')),
+    url(r'^submit/$', TemplateView.as_view(template_name='submit.html')),
 )
 
 if settings.DEBUG:
