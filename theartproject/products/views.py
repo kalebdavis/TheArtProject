@@ -165,7 +165,7 @@ def submitProduct(request):
 			return HttpResponseRedirect("/products/")	
 	else:
 		form = SubmitForm()
-		return render_to_response("productSubmit.html", {"form":form}, context_instance=RequestContext(request))
+		return render_to_response("submit.html", {"form":form}, context_instance=RequestContext(request))
 				
 """
 detailProduct takes the user to the product detail's page.

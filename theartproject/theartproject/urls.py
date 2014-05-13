@@ -33,7 +33,7 @@ urlpatterns = patterns('',
     #url(r'^contact/$', 'products.views.about', name='contact'),
     url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
     url(r'^terms/$', TemplateView.as_view(template_name='terms.html')),
-    url(r'^submit/$', TemplateView.as_view(template_name='submit.html')),
+    url(r'^submit/$', 'products.views.submitProduct', name='submit_product'),
 )
 
 if settings.DEBUG:
