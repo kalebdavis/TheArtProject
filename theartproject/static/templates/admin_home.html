@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% block content %}
 <!DOCTYPE html>
 <html>
@@ -6,11 +8,13 @@
 	</head>
 
 	<body>
-	<h1>Admin home page</h1>
-		<a href='/add_product/'>Add a new product</a>
-		<br/>
-		<a href='/delete_product/'>Delete product</a>
-		<br/>
+	<div class="admin_home">
+		<h1>Admin home page</h1>
+			<img src="/media/img/icons/plus.png"/>	<a href='/add_product/'>Add a new product</a>
+			<br/>
+			<img src="/media/img/icons/delete.png"/>	<a href='/delete_product/'>Delete product</a>
+			<br/>
+	</div>
 	</body>
 </html>
 {% endblock %}

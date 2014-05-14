@@ -718,3 +718,30 @@ small{
 	height: 7px;
 	background-color: #784489;
 }
+
+/* Kaleb added in for admin purposes */
+#login {
+	text-decoration: none;
+	font-family: "Droid serif", serif;
+	font-weight: normal;
+	color: white;
+	line-height: 1.6em;
+}
+
+.register_div {
+	width: 100%;
+	margin-top: 40px;
+	margin-bottom: 120px;
+	margin-left: 100px;
+	font-family: "Droid Serif", serif;
+	line-height: 1.6em;
+}
+
+.admin_home {
+	width: 100%;
+	margin-top: 40px;
+	margin-bottom: 120px;
+	margin-left: 100px;
+	font-family: "Droid Serif", serif;
+	line-height: 1.6em;
+}
