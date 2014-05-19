@@ -135,16 +135,19 @@ def viewHomePage(request):
 
 	categories = Category.objects.all()
 	imageFromCategory = []
-	for image in allImages:
-		for category in categories:
+	imagesToBeShown = []
+	for category in categories:
+		for image in allImages:
 			if image.product.category == category:
 				imageFromCategory.append(image)
-				break
+		imagesToBeShown.append(imageFromCategory[0])
+		imageFromCategory = []
 
 	context['recentProducts'] = recentProducts[0:5]
 	context['images'] = images
 	context['categories'] = categories
-	context['imageFromCategory'] = imageFromCategory
+	print(imagesToBeShown)
+	context['imageFromCategory'] = imagesToBeShown
 	return render_to_response('home.html', context, context_instance=RequestContext(request))
 
 
