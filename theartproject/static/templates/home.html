@@ -9,11 +9,12 @@
 			<div id = "btnRight"></div>
 			<div class = "slideshow">
 				<div id="slideshow_ul">
-					<li data-id=1><a href="#"><img src="/media/img/slides/placeholderSlide.gif" width="960" height="400"/></a></li>
+					<li data-id=1><a href="#"><img src="/media/img/welcome.jpg" width="960" height="400"/></a></li>
+					<li data-id=2><a href="#"><img src="/media/img/sale.jpg" width="960" height="400"/></a></li>
 					{% for image in images %}
 					{% for product in recentProducts %}
 						{% if image.product == product %}
-							<li data-id=1><a href={% url 'product_list_filtered' image.product.id %}><img src="{{image.image.url}}" width="960" height="400"/></a></li>
+							<li data-id=3><a href={% url 'product_list_filtered' image.product.id %}><img src="{{image.image.url}}" width="960" height="400"/></a></li>
 						{% endif %}
 					{% endfor %}
 					{% endfor %}
