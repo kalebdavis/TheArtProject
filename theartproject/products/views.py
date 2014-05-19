@@ -25,8 +25,8 @@ def listProducts(request):
 	allProducts = Product.objects.all()
 	allImages = Image.objects.all()
 	allCategories = Category.objects.all()
-	answer = None
-
+	context = {}
+	
 	if request.method == 'POST':
 		answer = request.POST['value']
 		categories_list = Product.objects.filter(category__category__contains=answer)
@@ -49,7 +49,7 @@ def listProducts(request):
 				filteredImages.append(image)
 				count += 1
 		count = 0
-	context = {}
+
 	context['products'] = allProducts
 	context['images'] = filteredImages
 	context['categories'] = allCategories

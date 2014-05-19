@@ -8,8 +8,9 @@
 			<form action="" method="post"> {% csrf_token %}
 				<ul>
 					{% for category in categories %}
-					<li {% if category == answer or answer == None and forloop.first %} class="selected"><button class="selected" type="submit" value="{{category.category}}">
-					{% else %}<li><button> {% endif %}<div class="decoration"></div><a href="/products/" {% if category == answer or answer == None and forloop.first %}class="selected" {% endif %}><div class="decoration"></div>{{category.category}}</a></li>
+					<li {% if category == answer or answer == None and forloop.first %} class="selected"><button class="selected" type="submit" name="value" value="{{category.category}}">
+					{% else %}><button type="submit" name="value" value="{{category.category}}"> {% endif %}<div class="decoration"></div><a href="/products/" {% if category == answer or answer == None and forloop.first %}class="selected" {% endif %}><div class="decoration"></div>{{category.category}}</a></li>
+					<!--<button type="submit" name="value" value="{{category.category}}"></button>-->
 					{% endfor %}
 				</ul>
 			</form>
