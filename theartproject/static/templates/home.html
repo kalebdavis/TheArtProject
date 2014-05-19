@@ -27,9 +27,9 @@
 		<div class = "categories">
 			<div class = "title">{{category.category}}</div>
 			{% for image in imageFromCategory %}
-			{% if image.product.category == category %}
-				<a href={% url 'product_list_filtered' image.product.id %}><img src="{{image.image.url}}" width="100%" height="100%"/></a>
-			{% endif %}
+				{% if image.product.category == category %}
+					<a href={% url 'product_list_filtered' image.product.id %}><img src="{{image.image.url}}" width="100%" height="100%"/></a>
+				{% endif %}
 			{% endfor %}
 		</div>
 		{% endfor %}

@@ -28,10 +28,13 @@ def listProducts(request):
 	context = {}
 	
 	if request.method == 'POST':
-		answer = request.POST['value']
-		categories_list = Product.objects.filter(category__category__contains=answer)
-		allProducts = categories_list
-		context['answer'] = answer
+		if request.POST['value'] == "all":
+			categories_list = allProducts
+		else:
+			answer = request.POST['value']
+			categories_list = Product.objects.filter(category__category__contains=answer)
+			allProducts = categories_list
+			context['answer'] = answer
 
 	elif request.method == 'GET':
 		search = request.GET.get('search_query', '')

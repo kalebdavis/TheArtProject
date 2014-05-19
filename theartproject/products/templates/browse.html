@@ -7,17 +7,33 @@
 			<div id = "v-nav">
 			<form action="" method="post"> {% csrf_token %}
 				<ul>
+					<li>
+						<a href="/products/" class="selected">
+						<button type="submit" class="selected" name="value" value="all">All Items</button></a>
+					</li>
 					{% for category in categories %}
-					<li {% if category == answer or answer == None and forloop.first %} class="selected"><button class="selected" type="submit" name="value" value="{{category.category}}">
-					{% else %}><button type="submit" name="value" value="{{category.category}}"> {% endif %}<div class="decoration"></div><a href="/products/" {% if category == answer or answer == None and forloop.first %}class="selected" {% endif %}><div class="decoration"></div>{{category.category}}</a></li>
-					<!--<button type="submit" name="value" value="{{category.category}}"></button>-->
+					<li> 
+						{% if category == answer %} 
+							<a href="/products/" class="selected">
+							<button type="submit" class="selected" name="value" value="{{category.category}}">
+						{% else %}
+							<a href="/products/">
+							<button type="submit" name="value" value="{{category.category}}"> 
+						{% endif %}
+							{{category.category}} </button></a>
+						<!--<div class="decoration"></div><a href="/products/" 
+							{% if category == answer or answer == None and forloop.first %}
+								class="selected" 
+							{% endif %}>
+						<div class="decoration"></div>{{category.category}}</a></li> -->
+					</li>
 					{% endfor %}
 				</ul>
 			</form>
 			</div>
 			<div id = "content">
 				<h4>{% if answer != None %}{{answer}}
-				{% else %} {{ categories | first }} {% endif %}
+				{% else %} All Items {% endif %}
 				</h4>
 
 				{% for product in products %}
