@@ -31,6 +31,7 @@ urlpatterns = patterns('',
 
     #url(r'^contact/$', 'products.views.about', name='about'),
     #url(r'^contact/$', 'products.views.about', name='contact'),
+    url(r'^payment/$', TemplateView.as_view(template_name="payment.html")),
     url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
     url(r'^terms/$', TemplateView.as_view(template_name='terms.html')),
     url(r'^submit/$', 'products.views.submitProduct', name='submit_product'),
